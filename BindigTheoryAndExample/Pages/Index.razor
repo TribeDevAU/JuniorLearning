@@ -5,24 +5,42 @@
 
 
 
+Enter your Name:
 
 
+@* Binding variable with elements *@
 <p>   
-Name: @person.Salesperson
+   <input type="text"
+@bind-value ="person.Salesperson" /> 
 </p>
 
 <br/>
 
-<p>
-Amount: @person.Amount
+Enter the Amount:
 
-</P>
+@* Binding variable with elements *@
+<p>
+    <input type="number"
+@bind-value ="person.Amount" />
+</p>
+
+
+
+@* Calling person object *@
+<p>
+Your Details:
+<br/>
+Name: @person.Salesperson
+<br/>
+
+@* ToString("c") to show currency *@
+Amount: @person.Amount.ToString("c") 
+</p>
+
+
+
 
 @code{
-
-
-
-
     /// <summary>
     /// Example of one way binding 
     /// 
@@ -43,8 +61,8 @@ Amount: @person.Amount
 
         person = new IndexViewModel
         {
-            Salesperson = "Alex",
-            Amount = 1000,
+            Salesperson = "",
+            Amount = 0,
             Locations = new List<Location>
     {
     new Location { id = 1, city = "London", postcode = 2192, Country = "England" }

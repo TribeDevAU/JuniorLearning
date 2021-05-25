@@ -1,0 +1,79 @@
+﻿
+
+
+@page "/"
+
+
+
+
+
+<p>   
+Name: @person.Salesperson
+</p>
+
+<br/>
+
+<p>
+Amount: @person.Amount
+
+</P>
+
+@code{
+
+
+
+
+    /// <summary>
+    /// Example of one way binding 
+    /// 
+    /// </summary>
+    
+
+
+    IndexViewModel person = null;   
+
+
+    /// <summary>
+    /// OnInitialized method used for OnDemand Print of Person
+    /// </summary>
+    protected override void OnInitialized()
+    {
+       
+        base.OnInitialized();    
+
+        person = new IndexViewModel
+        {
+            Salesperson = "Alex",
+            Amount = 1000,
+            Locations = new List<Location>
+    {
+    new Location { id = 1, city = "London", postcode = 2192, Country = "England" }
+    }
+        };
+
+        }
+
+
+    /// <summary>
+    /// get/set used and Location List created 
+    /// </summary>
+    class IndexViewModel
+    {
+        public string Salesperson { get; set; }
+        public double Amount { get; set; }
+        public bool isActive { get; set; }
+        public List<Location> Locations;
+    }
+
+    /// <summary>
+    /// used to update the location details
+    /// </summary>
+    class Location
+    {
+        public int id { get; set; }
+        public string city { get; set; }
+        public int postcode { get; set; }
+        public string Country { get; set; }
+     }
+
+}

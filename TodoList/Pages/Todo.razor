@@ -45,7 +45,7 @@ items that aren't complete (IsDone is false).
 
     private void addToDo()
     {
-        if (string.IsNullOrWhiteSpace(newTodo))
+        if (!string.IsNullOrWhiteSpace(newTodo))
         {
             todos.Add(new TodoItem { Title = newTodo });
             newTodo = string.Empty;

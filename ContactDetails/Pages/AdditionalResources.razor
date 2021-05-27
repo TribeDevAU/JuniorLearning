@@ -1,31 +1,23 @@
-﻿
+﻿<h3>AdditionalResources</h3>
 
 
-@page "/"
+@* Please dont execute *@
 
-
-
-Enter your Name:
-
-
-@* Binding variable with elements *@
-<p>   
-   <input type="text"
-@bind-value ="person.Salesperson" /> 
-</p>
-
-<br/>
-
-Enter the Amount:
-
-@* Binding variable with elements *@
+Enter your postcode
 <p>
     <input type="number"
-@bind-value ="person.Amount" />
+@bind-value ="local.postcode" />
 </p>
 
+Enter your Country
+<p>
+    <input type="text "
+@bind-value ="local.Country" />
+</p>
 
- <button class="btn btn-primary" @onclick="ShowDeatils">Click me</button>
+@* Button for user input *@
+ <button class="btn btn-primary" @onclick="ShowDetails">Click me</button>
+
 
 
 @* Calling person object *@
@@ -34,51 +26,45 @@ Your Details:
 <br/>
 Name: @person.Salesperson
 <br/>
-
 @* ToString("c") to show currency *@
 Amount: @person.Amount.ToString("c") 
 </p>
 
 
 
-
-@code{
-
-
-    void ShowDeatils()
+@code {
+    void ShowDetails()
     {
-
-       person.Amount=999;
-        person.Salesperson="lalala";
-
+        return;
     }
-
-
     /// <summary>
-    /// Example of one way binding 
-    /// 
+    /// show two way binding 
     /// </summary>
-    
+  
+
+
     IndexViewModel person = null;   
     /// <summary>
     /// OnInitialized method used for OnDemand Print of Person
     /// </summary>
     protected override void OnInitialized()
     {
-       
         base.OnInitialized();    
-
         person = new IndexViewModel
         {
             Salesperson = "",
             Amount = 0,
             Locations = new List<Location>
     {
-    new Location { id = 1, city = "London", postcode = 2192, Country = "England" }
+    new Location {city = local.city, postcode = local.postcode, Country = local.Country }
     }
         };
 
         }
+
+
+
+
 
 
     /// <summary>
@@ -88,20 +74,20 @@ Amount: @person.Amount.ToString("c")
     {
         public string Salesperson { get; set; }
         public double Amount { get; set; }
-        public bool isActive { get; set; }
         public List<Location> Locations;
     }
+    IndexViewModel index = new IndexViewModel();
 
     /// <summary>
     /// used to update the location details
     /// </summary>
     class Location
     {
-        public int id { get; set; }
         public string city { get; set; }
         public int postcode { get; set; }
         public string Country { get; set; }
      }
 
-}
+    Location local = new Location();
 
+}

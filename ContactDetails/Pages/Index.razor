@@ -1,0 +1,218 @@
+﻿
+@page "/"
+
+
+
+
+
+@* Binding variable with elements *@
+<p>   
+
+Enter your Name: 
+<input type="text"
+@bind-value =UserName
+//@bind-value:event="oninput" @onkeydown="CheckInput"
+/>
+</p>
+
+
+
+<p>
+Enter Amount:
+<input type="number"
+@bind-value =UserNum
+//@bind-value:event="oninput" @onkeydown="CheckInput1
+"/>
+</p>
+
+<p>
+Enter Your Addres: 
+
+<input type="text"
+@bind-value =UserAddress
+//@bind-value:event="oninput" @onkeydown="CheckInput2
+"/>
+</p>
+
+
+
+
+@foreach (var name in myList)
+{
+
+    <h3>@name</h3>
+}
+
+
+<br/>
+
+@foreach (var num in myList1)
+{
+
+    <h3>@num</h3>
+
+}
+
+
+@foreach (var address in myList2)
+{
+
+    <h3>@address</h3>
+}
+
+<br/>
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Address</th>
+  </tr>
+  <tr>
+    <td>@UserName</td>
+    <td>@UserNum</td>
+    <td>@UserAddress</td>
+  </tr>
+
+  </table>
+
+
+
+@code{
+
+
+
+     
+
+
+    private string UserAddress { get; set; }
+    private string UserName { get; set; }
+    private string UserNum { get; set; }
+
+
+
+    public List<string> myList = new List<string> { "" };
+    public List<string> myList1 = new List<string> { "" };
+    public List<string> myList2 = new List<string> { "" };
+
+
+
+
+
+    private void CheckInput(KeyboardEventArgs keyEvent)
+    {
+        if(keyEvent.Key == "Enter")
+        {
+            AddToList(UserName);
+            UserName = string.Empty;
+        }
+    }
+    private void AddToList(string str)
+    {
+        myList.Add(str);
+    }
+
+
+
+
+   
+    
+
+    private void CheckInput1(KeyboardEventArgs keyEvent1)
+    {
+        if(keyEvent1.Key == "Enter")
+        {
+            AddToList1(UserNum);
+            UserNum = string.Empty;
+        }
+    }
+
+    private void AddToList1(string str)
+    {
+        myList1.Add(str);
+    }
+
+
+
+
+
+    
+
+    private void CheckInput2(KeyboardEventArgs keyEvent2)
+    {
+        if(keyEvent2.Key == "Enter")
+        {
+            AddToList2(UserAddress);
+            UserAddress = string.Empty;
+        }
+    }
+    private void AddToList2(string str)
+    {
+        myList2.Add(str);
+    }
+
+
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// show two way binding 
+    /// </summary>
+  
+
+
+    IndexViewModel person = null;   
+    /// <summary>
+    /// OnInitialized method used for OnDemand Print of Person
+    /// </summary>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();    
+        person = new IndexViewModel
+        {
+            Salesperson = "",
+            Amount = 0,
+            Locations = new List<Location>
+    {
+    new Location {city = local.city, postcode = local.postcode, Country = local.Country }
+    }
+        };
+
+        }
+
+
+
+
+
+
+    /// <summary>
+    /// get/set used and Location List created 
+    /// </summary>
+    class IndexViewModel
+    {
+        public string Salesperson { get; set; }
+        public double Amount { get; set; }
+        public List<Location> Locations;
+    }
+    IndexViewModel index = new IndexViewModel();
+
+    /// <summary>
+    /// used to update the location details
+    /// </summary>
+    class Location
+    {
+        public string city { get; set; }
+        public int postcode { get; set; }
+        public string Country { get; set; }
+     }
+
+    Location local = new Location();
+
+
+}
+

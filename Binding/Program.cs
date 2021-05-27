@@ -7,11 +7,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections;
 
-
-
-namespace BindigTheoryAndExample
+namespace Binding
 {
     public class Program
     {

@@ -16,7 +16,7 @@ namespace FinanceMentor.Shared
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
         public string Subject { get; set; }
-        public EarningCategory Category { get; set; }
+        public ExpenseCategory Category { get; set; }
         public decimal Amount { get; set; }
     }
 

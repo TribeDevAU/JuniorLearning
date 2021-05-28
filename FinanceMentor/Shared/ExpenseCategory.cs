@@ -9,12 +9,12 @@ namespace FinanceMentor.Shared
     {
 
 
-       Housing, 
-       Transportaio,
-       Food, 
-       Utilities, 
-       Clothing,
-       Gifts, 
-       Donations,
+        Housing,
+        Transportaion,
+        Food,
+        Utilities,
+        Clothing,
+        Gifts,
+        Donations,
     }
 }

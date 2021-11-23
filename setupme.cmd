@@ -1,8 +1,8 @@
 winget install Microsoft.VisualStudioCode
-winget install Microsoft.VisualStudio.2019.Enterprise
-winget install Microsoft.VisualStudio.2019.Enterprise-Preview
+winget install Microsoft.VisualStudio.2022.Enterprise
+winget install Microsoft.VisualStudio.2022.Enterprise-Preview
 winget install Microsoft.Office
-winget install Audacity
+winget install Audacity.Audacity
 winget install TechSmith.Camtasia
 winget install Amazon.WorkspacesClient
 winget install Microsoft.AzureDataStudio
